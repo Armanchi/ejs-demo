@@ -31,7 +31,6 @@ const deleteTask = async (req, res) => {
         await Task.findByIdAndDelete(req.params.id)
         const task = req.session.pendingMessage = 'Task was deleted.'
         res.redirect('/tasks')
-        
     } catch (err) {
         req.session.pendingMessage = 'Something went wrong.'
         res.redirect('/tasks')
