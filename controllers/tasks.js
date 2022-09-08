@@ -24,14 +24,14 @@ const createTask = async (req, res) => {
     }
 }
 
-// You need to change the deleteTask method in the controller to issue a findByIdAndDelete. 
-// Then it should should display a message on the success or failure of the operation and then redirect to the tasks page.
+//Delete button 
 
 const deleteTask = async (req, res) => {
     try {
         await Task.findByIdAndDelete(req.params.id)
         const task = req.session.pendingMessage = 'Task was deleted.'
         res.redirect('/tasks')
+        
     } catch (err) {
         req.session.pendingMessage = 'Something went wrong.'
         res.redirect('/tasks')
